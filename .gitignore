@@ -1,0 +1,13 @@
+# Data files (Don't push raw data to GitHub)
+data/
+*.csv
+*.jsonl
+
+# Python environment
+__pycache__/
+.ipynb_checkpoints/
+venv/
+.env
+
+# System files
+.DS_Store
