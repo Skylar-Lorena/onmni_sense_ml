@@ -45,10 +45,11 @@ omnisense/
 │   └── processed/          # Sanitized data (amazon_cleaned.csv, mendeley_cleaned.csv)
 ├── models/                 # Serialized model assets (XGBoost, TF-IDF, LabelEncoder)
 ├── notebooks/
-│   ├── 01_eda.ipynb        # Data auditing and price normalization
-│   ├── 02_baseline.ipynb   # SpaCy Pipeline & Naive Bayes Baseline
-│   ├── 03_modeling.ipynb   # SMOTE Balancing & XGBoost Implementation
-│   └── OmniSense_Master_Notebook.ipynb # FINAL: Executive Report & SHAP Insights
+│   ├── 01_eda.ipynb
+│   ├── 02_baseline.ipynb
+│   ├── 03_modeling.ipynb
+│   ├── 04_interpretability.ipynb
+│   └── 05_final_synthesis.ipynb  
 ├── .gitignore              # Excludes venv, checkpoints, & large data files
 ├── README.md               # Project documentation
 └── requirements.txt        # Pinned dependencies (XGBoost, SHAP, Imblearn)
@@ -95,7 +96,7 @@ MIT
 
 ## Contributors
 
--   Lorenah -M, Ainsley -G, Angela -M, Dennis -K.
+-   Lorenah -M
 
     
 
