@@ -17,6 +17,9 @@ cd omnisense
 # Create a virtual environment
 python -m venv venv
 
+# Download Language Models:
+python -m spacy download en_core_web_sm
+
 # Activate environment
 # On Windows:
 venv\Scripts\activate
@@ -38,20 +41,18 @@ Maintain this structure when adding new scripts or assets:
 ```
 omnisense/
 ├── data/
-│   ├── raw/                                        # Immutable original datasets
-│   │   ├── All Electronics.csv
-│   │   └── all_data.csv
-│   └── processed/                                  # Sanitized data for modeling
-│       ├── amazon_cleaned.csv
-│       └── mendeley_cleaned.csv
+│   ├── raw/                # Immutable original datasets
+│   └── processed/          # Sanitized data (amazon_cleaned.csv, mendeley_cleaned.csv)
+├── models/                 # Serialized model assets (XGBoost, TF-IDF, LabelEncoder)
 ├── notebooks/
-│   ├── 01_exploratory_data_analysis.ipynb          # Completed: Visuals & Cleaning Logic
-│   ├── 02_preprocessing_and_baseline.ipynb         # Skeleton: SpaCy Pipeline & Baseline
-│   ├── 03_advanced_modeling_and_interpretability.ipynb  # Skeleton: XGBoost & SHAP
-│   └── 04_final_evaluation_and_conclusions.ipynb   # Skeleton: Final Stakeholder Report
-├── .gitignore                                      # Excludes venv, checkpoints, & data/
-├── README.md                                       # Setup instructions & Data Dictionary
-└── requirements.txt                                # Project dependencies
+│   ├── 01_eda.ipynb
+│   ├── 02_baseline.ipynb
+│   ├── 03_modeling.ipynb
+│   ├── 04_interpretability.ipynb
+│   └── 05_final_synthesis.ipynb  
+├── .gitignore              # Excludes venv, checkpoints, & large data files
+├── README.md               # Project documentation
+└── requirements.txt        # Pinned dependencies (XGBoost, SHAP, Imblearn)
 ```
 ----------
 
@@ -65,13 +66,13 @@ omnisense/
 
 ##  Project Roadmap
 
-1.  **[01_Exploratory_Data_Analysis:** Data auditing, price normalization, and distribution plots.
-    
-2.  **[02_Preprocessing_and_Baseline:** Text cleaning (Lemmatization/Stop-words) and initial Naive Bayes model.
-    
-3.  **[03_Advanced_Modeling:** XGBoost/Transformer models and **SHAP** interpretability.
-    
-4.  **[04_Final_Evaluation:** Cross-platform comparison and business insights.
+- **Exploratory Data Analysis:** Data auditing, price normalization, and class distribution mapping.
+
+- **Preprocessing & Baseline:** Text cleaning (Lemmatization/Stop-words) and initial Naive Bayes testing.
+
+- **OmniSense Engine:** Implementation of SMOTE to handle class imbalance and XGBoost for high-accuracy classification.
+
+- **Interpretability & ROI:** Utilizing SHAP to identify "Red Flag" keywords (e.g., battery, delivery, condition) for strategic business intervention.
     
 
 ----------
@@ -81,6 +82,8 @@ omnisense/
 -   **Branching:** Do not push directly to `main`. Create a `feature/` or `dev/` branch for your task.
     
 -   **Commits:** Use descriptive commit messages (e.g., `feat: add vader sentiment labels`).
+
+-   **Dependencies:** If you add a library, update requirements.txt immediately.
     
 -   **Notebooks:** Ensure all cells are run and outputs are visible before committing notebooks.
     
@@ -93,10 +96,10 @@ MIT
 
 ## Contributors
 
--   Lorenah -M, Ainsley -G, Angela -M, Dennis -K.
+-   Lorenah -M
 
     
 
 ## Acknowledgments
 
-TBU
+Special thanks to the Mendeley and Amazon Open Data communities for providing the foundational datasets for this research.
